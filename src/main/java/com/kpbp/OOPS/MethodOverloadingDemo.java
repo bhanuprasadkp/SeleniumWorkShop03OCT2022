@@ -1,7 +1,7 @@
 package com.kpbp.OOPS;
 
 public class MethodOverloadingDemo {
-
+    // Method Overloading is a POLYMORPHISM concept of OOPS
     int a;
     int b;
     int c;
