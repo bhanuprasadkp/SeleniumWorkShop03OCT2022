@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver.Timeouts;
 
@@ -20,8 +19,8 @@ public class ActionDriver {
     public WebElement element;
 
     String url ="https://acme-test.uipath.com/login";
-    String txtEmail="ramanswamy@rediffmail.com";
-    String txtPassword="EKY9GJ";
+    String txtEmail="bhanuprasadkp@outlook.com";
+    String txtPassword="TestersMindSet@12345";
     String strActualResult;
 
     void setUpApplication(){
@@ -40,7 +39,7 @@ public class ActionDriver {
     }
 
     @Test(priority = 2)
-    void loginToApplication() throws InterruptedException {
+    void loginToApplication()  {
         loginPage login = new loginPage();
         element = login.email(driver);
         element.sendKeys(txtEmail);
@@ -53,10 +52,16 @@ public class ActionDriver {
         Assert.assertEquals(strActualResult, "Dashboard");
     }
 
-    /*@AfterTest
-    public void tearDown(){
-        driver.close();
-    }*/
+    @Test(priority = 3)
+    public void logOutOfApplication(){
+        homePage home=new homePage();
+        element = home.validateDashboard(driver);
+        element.click();
+    }
 
+    @Test(priority = 4)
+    public void closeApplication(){
+        driver.quit();
+    }
 
 }
